@@ -19,33 +19,15 @@ Before this lesson, students should already be able to:
 A new standard that introduces some constructs that make it easier to do traditional object oriented design
 
 ##### Why are we using this instead of the old prototype model?
-It’s much simpler and clearer (less code!) to use the ES6 class declaration model
+There's no real "under the hood" difference between the two.  The biggest reason to use the newer model is to be clearer about what you are defining:
 
 Pre-ES6:
 
 ```javascript
-var Class = function(methods) {   
-    var thisClass = function() {    
-        this.initialize.apply(this, arguments);          
-    };  
-    
-    for (var property in methods) { 
-       thisClass.prototype[property] = methods[property];
-    }
-          
-    if (!thisClass.prototype.initialize) {
-        thisClass.prototype.initialize = function(){};      
-    }
-    
-    return thisClass;    
-};
-
-var Rectangle = Class({ 
-    initialize: function(height, width) {
-        this.height = height;
-        this.width  = width;
-    }
-}); 
+function Rectangle(width, height) { 
+    this.width = width; 
+    this.height = height; 
+}
 ```
 
 ES6:
@@ -58,6 +40,10 @@ class Rectangle {
   }
 }
 ```
+
+With the ES6 model, it is obvious you are defining a class that should have members and functions.
+
+Using the `class` keyword also enforces using `new` when creating a new instance of the class.
 
 ### Let's code it!
 
@@ -72,7 +58,7 @@ First example:  https://jsfiddle.net/pheonixblade9/06pvmsj6/10/
 This is a basic constructor that takes in two arguments and sets their values as properties.
 
 ```javascript
-'use strict'
+'use strict';
 
 class Rectangle {
     constructor(width, height) {
@@ -229,7 +215,7 @@ Example: https://jsfiddle.net/pheonixblade9/1ugh6nxf/
 Going back to the `class` keyword we introduced earlier, there is an additional keyword, `extends` that allows a class to inherit from another.  All of the functions, properties, and variables are inherited down.  This is best explained through an example:
 
 ```javascript
-'use strict'
+'use strict';
 
 class Animal {
     constructor(sound) {
@@ -302,7 +288,7 @@ Now we can call `roll()` on our `Dog` object and see what happens.  You'll notic
 ##### Final JS
 
 ```javascript
-'use strict'
+'use strict';
 
 class Animal {
     constructor(sound) {
