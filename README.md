@@ -72,7 +72,7 @@ class Rectangle {
 
 `'use strict'` is a flag to let the Javascript engine know we're writing modern javascript.  It causes the compiler to flag certain behaviors that are unacceptable in newer versions of javascript such as omitting semicolons.  
 
-Adding this at the top of the file is required for writing code using ES6.
+Adding this at the top of the file is required for writing code using ES6 in Chrome.  Other browsers may not require it.
 
 ##### HTML
 
