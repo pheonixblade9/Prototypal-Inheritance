@@ -337,6 +337,28 @@ dog.woof();
 dog.roll();
 ```
 
+##### Note: there is another way!
+
+If you need to use prototypal inheritance on the fly without using a `class`, you can also simply access the object's `prototype` directly:
+
+```javascript
+function myProto(message) {
+    this.message = message;
+}
+
+myProto.prototype = {
+    constructor: myProto,
+    alert: function () {
+        alert(this.message);
+    }
+}
+
+var newProto = new myProto('Hi there!');
+newProto.alert();
+```
+
+This is effectively the same as defining it in the `class`.  It's just a different way of doing the same thing and is sometimes useful when needing to change the behavior of an object on the fly.
+
 ### Conclusion
 
 Prototypal inheritance and classes are a great way to organize your code into functional units.  For larger projects, this is crucial.  It allows breaking individual chunks of code into different files and makes it easier to write maintainable, decoupled code.
